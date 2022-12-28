@@ -11,11 +11,13 @@
   --blue: #4ea8de;
   --blue-dark: #1e6f9f;
   --red: #e25858;
+  --body: #454545;
 }
+
 
 body {
   color: var(--gray-100);
-  background: #454545;
+  background: var(--body);
   -webkit-font-smoothing: antialiased;
 }
 

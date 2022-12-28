@@ -66,6 +66,8 @@ header .info span {
 .taskContent label {
   color: var(--gray-100);
   font-size: 0.875rem;
+  line-height: 19px;
+  transition: color 0.2s;
 }
 
 .taskContent input[type="checkbox"] {
@@ -76,10 +78,19 @@ header .info span {
   flex-shrink: 0;
   border-radius: 50%;
   position: relative;
+  cursor: pointer;
+}
+
+.taskContent input[type="checkbox"]:hover {
+  border: 2px solid var(--blue-dark);
 }
 
 .taskContent input[type="checkbox"]:checked {
   background: var(--purple-dark);
+  border: none;
+}
+.taskContent input[type="checkbox"]:checked:hover{
+  background: var(--purple);
   border: none;
 }
 
@@ -106,6 +117,16 @@ header .info span {
   display: flex;
   justify-content: flex-start;
 }
+
+.deleteTask {
+  background: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+}
+
 
 .emptyTasks {
   display: flex;
