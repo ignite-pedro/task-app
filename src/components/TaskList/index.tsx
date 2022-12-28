@@ -1,10 +1,9 @@
 import React from 'react'
-import type { Task } from './types'
+import { generateId } from '../../helpers'
 import { TaskForm } from './components/TaskForm'
 import { Tasks } from './components/Tasks'
-
 import styles from './styles.module.css'
-import { generateId } from '../../helpers'
+import type { Task } from './types'
 
 export function TaskList() {
   const [tasks, setTasks] = React.useState<Task[]>([])
@@ -38,7 +37,7 @@ export function TaskList() {
   }
 
   return (
-    <div className={styles.todoListContainer}>
+    <div className={styles.taskListContainer}>
       <TaskForm onCreateNewTask={handleCreateNewTask} />
       <Tasks
         tasks={tasks}

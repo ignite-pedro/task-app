@@ -1,4 +1,4 @@
-.todoForm {
+.taskForm {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
   margin-top: -1.5rem;
 }
 
-.todoForm input {
+.taskForm input {
   width: 100%;
   background: var(--gray-500);
   color: var(--gray-100);
@@ -16,15 +16,15 @@
   border: none;
 }
 
-.todoForm input:placeholder {
+.taskForm input:placeholder {
   color: var(--gray-300);
 }
 
-.todoForm input:focus {
+.taskForm input:focus {
   outline: 1px solid var(--purple-dark);
 }
 
-.todoForm button {
+.taskForm button {
   display: flex;
   background: var(--blue-dark);
   padding: 1rem;
@@ -34,10 +34,10 @@
   cursor: pointer;
   transition: background-color 0.1s;
 }
-.todoForm button:hover {
+.taskForm button:hover {
   background: var(--blue);
 }
-.todoForm button > span {
+.taskForm button > span {
   color: var(--gray-100);
   font-size: 0.875rem;
   font-weight: bold;

@@ -11,7 +11,7 @@ export function TaskForm({ onCreateNewTask }: TaskFromProps) {
 
   return (
     <form
-      className={styles.todoForm}
+      className={styles.taskForm}
       onSubmit={(event) => {
         event.preventDefault()
         if (!newTask) {
