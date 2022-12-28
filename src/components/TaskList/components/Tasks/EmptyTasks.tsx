@@ -1,5 +1,5 @@
-import styles from './styles.module.css'
 import { ClipboardText } from 'phosphor-react'
+import styles from './styles.module.css'
 
 export function EmptyTasks() {
   return (

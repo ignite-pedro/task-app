@@ -7,7 +7,6 @@ type TaskFromProps = {
 }
 
 export function TaskForm({ onCreateNewTask }: TaskFromProps) {
-
   const [newTask, setNewTask] = React.useState('')
 
   return (
@@ -21,14 +20,14 @@ export function TaskForm({ onCreateNewTask }: TaskFromProps) {
 
         onCreateNewTask(newTask)
         setNewTask('')
-
-      }}>
+      }}
+    >
       <input
         value={newTask}
         onChange={(event) => {
           setNewTask(event.target.value)
         }}
-        placeholder='Adicione uma nova tarefa'
+        placeholder="Adicione uma nova tarefa"
       />
 
       <button>

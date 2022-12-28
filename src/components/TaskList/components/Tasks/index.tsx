@@ -11,13 +11,14 @@ type TasksProps = {
 }
 
 export function Tasks({ tasks, onDeleteTask, onUpdateTask }: TasksProps) {
-
   const totalTasks = tasks.length
-  const completedTasks = React.useMemo(() => tasks.filter(task => task.isCompleted).length, [tasks])
+  const completedTasks = React.useMemo(
+    () => tasks.filter((task) => task.isCompleted).length,
+    [tasks],
+  )
 
   return (
     <div className={styles.tasksContainer}>
-
       <header>
         <div className={styles.info}>
           <p className={styles.createdTasks}>Todas criadas</p>
@@ -26,16 +27,17 @@ export function Tasks({ tasks, onDeleteTask, onUpdateTask }: TasksProps) {
 
         <div className={styles.info}>
           <p className={styles.completedTasks}>Concluídas</p>
-          <span>{completedTasks} de {totalTasks}</span>
+          <span>
+            {completedTasks} de {totalTasks}
+          </span>
         </div>
       </header>
 
       {!totalTasks && <EmptyTasks />}
 
-
-      {!!totalTasks &&
+      {!!totalTasks && (
         <ul className={styles.tasks}>
-          {tasks.map(task => (
+          {tasks.map((task) => (
             <li key={task.id} className={styles.task}>
               <div className={styles.taskContent}>
                 <input
@@ -44,20 +46,28 @@ export function Tasks({ tasks, onDeleteTask, onUpdateTask }: TasksProps) {
                     onUpdateTask(task.id)
                   }}
                   id={task.id}
-                  type="checkbox" />
-                <label htmlFor={task.id} className={task.isCompleted ? styles.taskCompleted : ''}>{task.description}</label>
+                  type="checkbox"
+                />
+                <label
+                  htmlFor={task.id}
+                  className={task.isCompleted ? styles.taskCompleted : ''}
+                >
+                  {task.description}
+                </label>
               </div>
 
               <button
                 className={styles.deleteTask}
                 onClick={() => {
                   onDeleteTask(task.id)
-                }}>
-                <Trash color='#808080' size={18} />
+                }}
+              >
+                <Trash color="#808080" size={18} />
               </button>
             </li>
           ))}
-        </ul>}
+        </ul>
+      )}
     </div>
   )
 }
