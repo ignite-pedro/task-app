@@ -9,19 +9,18 @@ type TaskFromProps = {
 export function TaskForm({ onCreateNewTask }: TaskFromProps) {
   const [newTask, setNewTask] = React.useState('')
 
-  return (
-    <form
-      className={styles.taskForm}
-      onSubmit={(event) => {
-        event.preventDefault()
-        if (!newTask) {
-          return
-        }
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (!newTask) {
+      return
+    }
 
-        onCreateNewTask(newTask)
-        setNewTask('')
-      }}
-    >
+    onCreateNewTask(newTask)
+    setNewTask('')
+  }
+
+  return (
+    <form className={styles.taskForm} onSubmit={handleSubmit}>
       <input
         value={newTask}
         onChange={(event) => {
