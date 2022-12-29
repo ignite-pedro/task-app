@@ -42,7 +42,6 @@ header .info span {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  list-style-type: none;
 }
 
 .task {

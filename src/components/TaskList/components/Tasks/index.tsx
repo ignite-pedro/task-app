@@ -1,17 +1,17 @@
-import { Trash } from 'phosphor-react'
 import React from 'react'
-import { Task } from '../../types'
+import { Task as TaskType } from '../../types'
 import { EmptyTasks } from './EmptyTasks'
 import styles from './styles.module.css'
+import { Task } from './Task'
 
 type TasksProps = {
-  tasks: Task[]
+  tasks: TaskType[]
   onDeleteTask: (taskId: string) => void
   onUpdateTask: (taskId: string) => void
 }
 
 export function Tasks({ tasks, onDeleteTask, onUpdateTask }: TasksProps) {
-  const totalTasks = tasks.length
+  const tasksQuantity = tasks.length
   const completedTasks = React.useMemo(
     () => tasks.filter((task) => task.isCompleted).length,
     [tasks],
@@ -22,51 +22,30 @@ export function Tasks({ tasks, onDeleteTask, onUpdateTask }: TasksProps) {
       <header>
         <div className={styles.info}>
           <p className={styles.createdTasks}>Todas criadas</p>
-          <span>{totalTasks}</span>
+          <span>{tasksQuantity}</span>
         </div>
 
         <div className={styles.info}>
           <p className={styles.completedTasks}>Concluídas</p>
           <span>
-            {completedTasks} de {totalTasks}
+            {completedTasks} de {tasksQuantity}
           </span>
         </div>
       </header>
 
-      {!totalTasks && <EmptyTasks />}
+      {!tasksQuantity && <EmptyTasks />}
 
-      {!!totalTasks && (
-        <ul className={styles.tasks}>
+      {!!tasksQuantity && (
+        <div className={styles.tasks}>
           {tasks.map((task) => (
-            <li key={task.id} className={styles.task}>
-              <div className={styles.taskContent}>
-                <input
-                  checked={task.isCompleted}
-                  onChange={() => {
-                    onUpdateTask(task.id)
-                  }}
-                  id={task.id}
-                  type="checkbox"
-                />
-                <label
-                  htmlFor={task.id}
-                  className={task.isCompleted ? styles.taskCompleted : ''}
-                >
-                  {task.description}
-                </label>
-              </div>
-
-              <button
-                className={styles.deleteTask}
-                onClick={() => {
-                  onDeleteTask(task.id)
-                }}
-              >
-                <Trash color="#808080" size={18} />
-              </button>
-            </li>
+            <Task
+              key={task.id}
+              task={task}
+              onUpdateTask={onUpdateTask}
+              onDeleteTask={onDeleteTask}
+            />
           ))}
-        </ul>
+        </div>
       )}
     </div>
   )
